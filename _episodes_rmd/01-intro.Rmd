@@ -35,6 +35,43 @@ https://intro2r.com/combining-logical-operators.html
 
 case_when
 
+Scope
+
+Fejlhåndtering
+Nogle problemer er forventede. Dem håndterer vi med errors, warnings og messages
+
+Errors er fatale og rejses af stop(). Alt stopper. Dem bruger vi når 
+der ikke er nogen måde at få funktioenn til at fortsætte
+
+Warnings rejse af warning() og bruger når der er potentielle problemer. der ikke
+er alvorlige nok til at stoppe alt.
+
+Messages rejses af message() og dem rbuger vi når vi har brug for at fortælle brugeren
+af vores funktion et eller andet.
+
+tryCatch()
+
+
+Disse to skal muligvis skilles ud i separate kurser
+Funktionel programmering
+objekt orienteret programmering
+
+Fejlfinding.
+Opdag at du har en fejl. Det er en god ide at skrive tests der tjekker om 
+du får det forventede resultat.
+Gør den reproducerbar. Få fejlen til at gentage sig. Hvis det er med bestemte 
+data som input at fejlen opstår, så del input i to halvdele, og find ud af hvilken
+af dem der udløser fejlen. Fortsæt med at halvere  til du har præcist det datapunkt 
+der udløser fejlen.
+Find ud af hvor fejlen er
+fix den og test at det nu virker.
+
+Debugging:
+traceback() tillader os at finde ud af hvilken sekvens af kald der har ført til 
+fejlen.
+rerun with debug og options(error = browser) åbner en interaktiv session når
+fejlen optstår.
+breakpoints og browser() åbner et interaktivt værktøj på bestemte punkter i koden.
 
 
 {% include links.md %}
