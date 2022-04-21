@@ -1,0 +1,40 @@
+---
+title: "Introduction"
+teaching: 0
+exercises: 0
+questions:
+- "Key question (FIXME)"
+objectives:
+- "First learning objective. (FIXME)"
+keypoints:
+- "First key point. Brief Answer to questions. (FIXME)"
+---
+
+Struktur: 
+
+Løkker
+Nyttigt. Men bruges nok for ofte i R...
+
+For, while, repeat
+
+apply funktionerne er ofte bedre
+
+Hvorfor? Et eksempel
+iterationer
+
+
+
+rekursion
+Når en funktion kalder sig selv
+
+funktioner
+
+logiske tests
+https://intro2r.com/conditional-statements.html
+https://intro2r.com/combining-logical-operators.html
+
+case_when
+
+
+
+{% include links.md %}
