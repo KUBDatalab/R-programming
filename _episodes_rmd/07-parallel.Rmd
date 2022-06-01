@@ -1,0 +1,28 @@
+---
+title: "Parallelisering"
+teaching: 0
+exercises: 0
+questions:
+- "Key question (FIXME)"
+objectives:
+- "First learning objective. (FIXME)"
+keypoints:
+- "First key point. Brief Answer to questions. (FIXME)"
+---
+Vi gør en del ud af at prøve at skrive vektoriserede ting.
+Og for at undgå løkker.
+
+Løkker are bad m'kay.
+
+
+Det er fint.
+
+En gang imellem er det ikke vejen frem.
+
+Og en gang i mellem skal vi gøre mange ting, der er uafhængige af hinanden.
+
+Vektoriserede funktioner kan også køre parallelt
+
+
+
+{% include links.md %}
