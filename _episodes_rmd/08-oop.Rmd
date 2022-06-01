@@ -100,6 +100,29 @@ p <- sm$plot_histogram(binwidth = 2)
 p
 ```
 
+class name - hvad hedder den. GaussianSimulatorClass
+Og den gemmes i variablen gaussiansimulator
+
+public er de keywords vi kan bruge til at interagere med objektet. 
+Havde vi brugt private, ville brugeren ikke kunne interagere med dem. Vigtige dele som brugeren ikke skal pille ved gemmer vi væk som private.
+
+attributes. Der er fire af dem
+the constructor. Simple function that is first executed while creating an object of the class. If we proide attributes while creating the object, it will pass those attributes to the internal attributes. We provide mu, sigma and n_sampel, through the constructor to iniate a specific gaussian distribution. Hvis vi ikke skriver den selv - så sørger R6 systemet for at lave en.
+
+self keyword. En placeholder for vores object mens vi designer klassen.
+Når vi laver et object af den klasse - så erstattes self med object navnet internt.
+
+getter and setter methods. Funktioenr der tillader brugeren at sætte (eller ændre) værdier, og at få dem vist.
+
+generate_sampel en funktion der laver et tilfældigt sample af specifik størrelse fra den gaussiske fordeling.
+
+compute_stats metode, der beregner sample mean og sd.
+
+plot_histogram metode, der returnerer et histogram.
+
+det er ca. det der skal til, der er inheritance og polymorphismer der også bør dækkes.
+
+koushik khan er navnet, a not so short introductoin to object oriented programming using R
 
 
 {% include links.md %}
