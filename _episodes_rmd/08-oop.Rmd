@@ -1,0 +1,128 @@
+---
+title: "Objektorienteret"
+teaching: 0
+exercises: 0
+questions:
+- "Key question (FIXME)"
+objectives:
+- "First learning objective. (FIXME)"
+keypoints:
+- "First key point. Brief Answer to questions. (FIXME)"
+---
+
+Hvorfor?
+
+class -  The template
+
+Object - 
+
+Encapsulation
+
+Inheritance
+
+Polymorphism
+
+Der er flere måder at bygge objekter i R. 
+
+R6.
+
+```{r}
+library(R6)
+library(ggplot2)
+
+GaussianSimulator <- R6Class("GaussianSimulatorClass",
+                            public = list(
+                              mu = NA,
+                              sigma = NA,
+                              n_sample = NA,
+                              sample = NA,
+                              
+                              initialize = function(mu, sigma, n_sample){
+                                # Object Initiator
+                                # Args
+                                #   mu: mean of the distribution
+                                #   sigma: std. ev. of the distribution
+                                #   n_sample: size of the sample
+                                
+                                self$mu <- mu
+                                self$sigma <- sigma
+                                self$n_sample <- n_sample
+                              },
+                              
+                              get_sample_size = function(){
+                                # getter method
+                                
+                                return(self$n_sample)
+                              },
+                              
+                              set_sample_size = function(size){
+                                # setter method
+                                
+                                self$n_sample = size
+                              },
+                              
+                              generate_sample = function(){
+                                # generates the random sample
+                                
+                                self$sample <- rnorm(self$n_sample, self$mu, self$sigma)
+                                return(self$sample)
+                              },
+                              
+                              compute_stats = function(){
+                                # computes basic statistics of the sample
+                                
+                                r <- list(sample.mean = mean(self$sample),
+                                          sample.sd = sd(self$sample))
+                                return(r)
+                              },
+                              
+                              plot_histogram = function(binwidth){
+                                p <- qplot(self$sample, geom = "histogram",
+                                           breaks = seq(130, 200, binwidth),
+                                           colour = I("black"), fill = I("white"),
+                                           xlab = "X", ylab = "Count") 
+                                return(p)
+                              }
+                            ))
+```
+
+
+```{r}
+sm <- GaussianSimulator$new(mu=165, sigma=6.6, n_sample=1000)
+# creates a new object of the class GaussianSimulator
+
+r <- sm$generate_sample()
+# generates a random sample
+basic.stats <- sm$compute_stats()
+# computes basic statistics of the sample
+p <- sm$plot_histogram(binwidth = 2)
+# creates the histogram
+p
+```
+
+class name - hvad hedder den. GaussianSimulatorClass
+Og den gemmes i variablen gaussiansimulator
+
+public er de keywords vi kan bruge til at interagere med objektet. 
+Havde vi brugt private, ville brugeren ikke kunne interagere med dem. Vigtige dele som brugeren ikke skal pille ved gemmer vi væk som private.
+
+attributes. Der er fire af dem
+the constructor. Simple function that is first executed while creating an object of the class. If we proide attributes while creating the object, it will pass those attributes to the internal attributes. We provide mu, sigma and n_sampel, through the constructor to iniate a specific gaussian distribution. Hvis vi ikke skriver den selv - så sørger R6 systemet for at lave en.
+
+self keyword. En placeholder for vores object mens vi designer klassen.
+Når vi laver et object af den klasse - så erstattes self med object navnet internt.
+
+getter and setter methods. Funktioenr der tillader brugeren at sætte (eller ændre) værdier, og at få dem vist.
+
+generate_sampel en funktion der laver et tilfældigt sample af specifik størrelse fra den gaussiske fordeling.
+
+compute_stats metode, der beregner sample mean og sd.
+
+plot_histogram metode, der returnerer et histogram.
+
+det er ca. det der skal til, der er inheritance og polymorphismer der også bør dækkes.
+
+koushik khan er navnet, a not so short introductoin to object oriented programming using R
+
+
+{% include links.md %}
