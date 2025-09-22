@@ -1,0 +1,5 @@
+project:
+  type: website
+  render:
+    - slides/index.qmd
+  output-dir: docs
