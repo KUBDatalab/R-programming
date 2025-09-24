@@ -1,5 +1,5 @@
 project:
-  type: website
+  type: default
   render:
     - slides/index.qmd
   output-dir: docs
