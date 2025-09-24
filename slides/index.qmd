@@ -1,7 +1,7 @@
 ---
 title: "Find guldet"
 subtitle: "Eller pyrit"
-output-file: index
+output-file: slides
 format: 
   revealjs:
     logo: "kubdatalab.png"
