@@ -1,0 +1,158 @@
+---
+title: 'functions'
+teaching: 10
+exercises: 2
+---
+
+:::::::::::::::::::::::::::::::::::::: questions 
+
+- How do you write a lesson using R Markdown and `{sandpaper}`?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Explain how to use markdown with the new lesson template
+- Demonstrate how to include pieces of code, figures, and nested challenge blocks
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Introduction
+
+Hvad er en funktion overhovedet, og hvorfor laver vi dem?
+
+Hvordan laver man en funktion?
+
+```{r first_function, eval = FALSE}
+my_first_function <- function(input){
+   mean(input, na.rm = TRUE)
+}
+```
+
+
+## A useful function
+
+på denne side kan vi downloade data om markedsandele for mobilfabrikanter i Afrika.
+
+Den tillader os at downloade data direkte eksempelvis i en 
+read_csv
+
+https://gs.statcounter.com/vendor-market-share/mobile/africa/chart.php?device=Mobile&device_hidden=mobile&statType_hidden=vendor&region_hidden=af&granularity=yearly&statType=Device%20Vendor&region=Africa&fromInt=2022&toInt=2025&fromYear=2022&toYear=2025&csv=1
+
+Den kan vi doktorere på, og når frem til at dette er nok til at få 
+data for africa: 
+
+```{r searc_n_replace, eval = FALSE}
+library(tidyverse)
+"https://gs.statcounter.com/vendor-market-share/mobile/chart.php?device=Mobile&device_hidden=mobile&statType_hidden=vendor&region_hidden=af&granularity=yearly&statType=Device%20Vendor&fromInt=2022&toInt=2025&fromYear=2022&toYear=2025&csv=1" |> str_replace("af", "EU")
+```
+
+
+:::: callout
+## How did we find that?
+
+We found the site INDSÆT URL. Right-clicking on download and copying the url we got the url above. 
+
+Inspecting the url reveal that 
+::::
+
+"https://gs.statcounter.com/vendor-market-share/mobile/chart.php?device=Mobile&device_hidden=mobile&statType_hidden=vendor&region_hidden=af&granularity=yearly&statType=Device%20Vendor&fromInt=2022&toInt=2025&fromYear=2022&toYear=2025&csv=1"
+
+Det betyder at vi "blot" skal ændre "region_hidden=af" til "region_hidden=eu" for at få data fra europa.
+
+Det kan vi gøre med en søg og erstat.
+
+Og så en spoiler (eller en discussion med solution - minimeret i hvert fald.)
+
+:::: spoiler
+## Will this always work?
+
+Det her går kun godt for der ikke står "af" andre steder i urlen. Det lidt mere robuste ville være:
+
+paste0("https://gs.statcounter.com/vendor-market-share/mobile/chart.php?device=Mobile&device_hidden=mobile&statType_hidden=vendor&region_hidden=", input, "&granularity=yearly&statType=Device%20Vendor&fromInt=2022&toInt=2025&fromYear=2022&toYear=2025&csv=1")
+
+hvor vi konkatenerer to dele af urlen, på hver side af det vi så ændrer.
+
+::::
+
+
+## selve funktionen:
+
+```{r the_real_function, eval = FALSE}
+grabs_data <- function(region){
+   url <- "https://gs.statcounter.com/vendor-market-share/mobile/chart.php?device=Mobile&device_hidden=mobile&statType_hidden=vendor&region_hidden=af&granularity=yearly&statType=Device%20Vendor&fromInt=2022&toInt=2025&fromYear=2022&toYear=2025&csv=1"
+   url <- str_replace(url, "af", region)
+   read_csv(url) |> 
+      mutate(region = region, .after = 1)
+}
+```
+
+Den spytter nu en data frame ud, som indeholder data for den region vi har valgt. 
+
+Vi gemmer funktionen i en separat .R fil. Og kører source på den.
+
+
+## hvilke regioner har vi så?
+
+afrika: af
+europa: eu
+nordamerika: na
+sydamerika:  sa
+asien: as
+oceanien: oc
+
+Det kan vi skrive som en vektor.
+
+```{r def_regions, eval = FALSE}
+regions <- c("af", "sa", "na", "eu", "as", "oc")
+```
+
+Så vi vil gerne have skrevet en funktion der kan indsætte det her
+på "af" pladsen i vores url. Hvordan gør vi det?
+
+## en for-løkke
+
+Vi vil gerne trække data for hver af de regioner vi har i regions.
+
+## Hvordan gemmer vi det?
+
+vores funktion spytter dataframes ud. vi skal have et objekt der 
+kan opsamle dem. Den type vi har der kan samle hvad som helst op er:
+list. 
+
+Så vi definerer en liste.
+
+kører vores for loop.
+Og samler.
+
+```{r samle_liste, eval = FALSE}
+
+resultat <- list()
+for(i in regions){
+   print(i)
+   resultat[[i]] <- grabs_data(i)
+
+}
+
+resultat |> bind_rows() |> view()
+```
+
+
+
+
+
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::: keypoints 
+
+- Use `.md` files for episodes when you want static content
+- Use `.Rmd` files for episodes when you need to generate output
+- Run `sandpaper::check_lesson()` to identify any issues with your lesson
+- Run `sandpaper::build_lesson()` to preview your lesson locally
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
