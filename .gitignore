@@ -53,3 +53,5 @@ po/*~
 renv/sandbox # OPTIONAL
 
 /.quarto/
+
+/.luarc.json
