@@ -253,6 +253,18 @@
 </div>
 <!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush3">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading3">
+        <a href="functions.html">2. functions</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -493,6 +505,195 @@ locally</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
+</section></section><section id="aio-functions"><p>Content from <a href="functions.html">functions</a></p>
+<hr>
+<p>Last updated on 2025-11-05 |
+
+        <a href="https://github.com/Sorendavidsen/R-programming/edit/main/episodes/functions.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 12 minutes</p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>How do you write a lesson using R Markdown and
+<a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Explain how to use markdown with the new lesson template</li>
+<li>Demonstrate how to include pieces of code, figures, and nested
+challenge blocks</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<hr class="half-width">
+<p>Hvad er en funktion overhovedet, og hvorfor laver vi dem?</p>
+<p>Hvordan laver man en funktion?</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_first_function</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span><span class="op">)</span><span class="op">{</span></span>
+<span>   <span class="fu">mean</span><span class="op">(</span><span class="va">input</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre>
+</div>
+</section><section><h2 class="section-heading" id="a-useful-function">A useful function<a class="anchor" aria-label="anchor" href="#a-useful-function"></a>
+</h2>
+<hr class="half-width">
+<p>på denne side kan vi downloade data om markedsandele for
+mobilfabrikanter i Afrika.</p>
+<p>Den tillader os at downloade data direkte eksempelvis i en
+read_csv</p>
+<p><a href="https://gs.statcounter.com/vendor-market-share/mobile/africa/chart.php?device=Mobile&amp;device_hidden=mobile&amp;statType_hidden=vendor&amp;region_hidden=af&amp;granularity=yearly&amp;statType=Device%20Vendor&amp;region=Africa&amp;fromInt=2022&amp;toInt=2025&amp;fromYear=2022&amp;toYear=2025&amp;csv=1" class="external-link uri">https://gs.statcounter.com/vendor-market-share/mobile/africa/chart.php?device=Mobile&amp;device_hidden=mobile&amp;statType_hidden=vendor&amp;region_hidden=af&amp;granularity=yearly&amp;statType=Device%20Vendor&amp;region=Africa&amp;fromInt=2022&amp;toInt=2025&amp;fromYear=2022&amp;toYear=2025&amp;csv=1</a></p>
+<p>Den kan vi doktorere på, og når frem til at dette er nok til at få
+data for africa:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span>
+<span><span class="st">"https://gs.statcounter.com/vendor-market-share/mobile/chart.php?device=Mobile&amp;device_hidden=mobile&amp;statType_hidden=vendor&amp;region_hidden=af&amp;granularity=yearly&amp;statType=Device%20Vendor&amp;fromInt=2022&amp;toInt=2025&amp;fromYear=2022&amp;toYear=2025&amp;csv=1"</span> <span class="op">|&gt;</span> <span class="fu">str_replace</span><span class="op">(</span><span class="st">"af"</span>, <span class="st">"EU"</span><span class="op">)</span></span></code></pre>
+</div>
+<div id="how-did-we-find-that" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="how-did-we-find-that" class="callout-inner">
+<h3 class="callout-title">How did we find that?</h3>
+<div class="callout-content">
+<p>We found the site INDSÆT URL. Right-clicking on download and copying
+the url we got the url above.</p>
+<p>Inspecting the url reveal that</p>
+</div>
+</div>
+</div>
+<p>“<a href="https://gs.statcounter.com/vendor-market-share/mobile/chart.php?device=Mobile&amp;device_hidden=mobile&amp;statType_hidden=vendor&amp;region_hidden=af&amp;granularity=yearly&amp;statType=Device%20Vendor&amp;fromInt=2022&amp;toInt=2025&amp;fromYear=2022&amp;toYear=2025&amp;csv=1" class="external-link uri">https://gs.statcounter.com/vendor-market-share/mobile/chart.php?device=Mobile&amp;device_hidden=mobile&amp;statType_hidden=vendor&amp;region_hidden=af&amp;granularity=yearly&amp;statType=Device%20Vendor&amp;fromInt=2022&amp;toInt=2025&amp;fromYear=2022&amp;toYear=2025&amp;csv=1</a>”</p>
+<p>Det betyder at vi “blot” skal ændre “region_hidden=af” til
+“region_hidden=eu” for at få data fra europa.</p>
+<p>Det kan vi gøre med en søg og erstat.</p>
+<p>Og så en spoiler (eller en discussion med solution - minimeret i
+hvert fald.)</p>
+<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Will this always work?
+  </h3>
+</button>
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div class="accordion-body">
+<p>Det her går kun godt for der ikke står “af” andre steder i urlen. Det
+lidt mere robuste ville være:</p>
+<p>paste0(“<a href="https://gs.statcounter.com/vendor-market-share/mobile/chart.php?device=Mobile&amp;device_hidden=mobile&amp;statType_hidden=vendor&amp;region_hidden=" class="external-link uri">https://gs.statcounter.com/vendor-market-share/mobile/chart.php?device=Mobile&amp;device_hidden=mobile&amp;statType_hidden=vendor&amp;region_hidden=</a>”,
+input,
+“&amp;granularity=yearly&amp;statType=Device%20Vendor&amp;fromInt=2022&amp;toInt=2025&amp;fromYear=2022&amp;toYear=2025&amp;csv=1”)</p>
+<p>hvor vi konkatenerer to dele af urlen, på hver side af det vi så
+ændrer.</p>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="selve-funktionen">selve funktionen:<a class="anchor" aria-label="anchor" href="#selve-funktionen"></a>
+</h2>
+<hr class="half-width">
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">grabs_data</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">region</span><span class="op">)</span><span class="op">{</span></span>
+<span>   <span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://gs.statcounter.com/vendor-market-share/mobile/chart.php?device=Mobile&amp;device_hidden=mobile&amp;statType_hidden=vendor&amp;region_hidden=af&amp;granularity=yearly&amp;statType=Device%20Vendor&amp;fromInt=2022&amp;toInt=2025&amp;fromYear=2022&amp;toYear=2025&amp;csv=1"</span></span>
+<span>   <span class="va">url</span> <span class="op">&lt;-</span> <span class="fu">str_replace</span><span class="op">(</span><span class="va">url</span>, <span class="st">"af"</span>, <span class="va">region</span><span class="op">)</span></span>
+<span>   <span class="fu">read_csv</span><span class="op">(</span><span class="va">url</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>      <span class="fu">mutate</span><span class="op">(</span>region <span class="op">=</span> <span class="va">region</span>, .after <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre>
+</div>
+<p>Den spytter nu en data frame ud, som indeholder data for den region
+vi har valgt.</p>
+<p>Vi gemmer funktionen i en separat .R fil. Og kører source på den.</p>
+</section><section><h2 class="section-heading" id="hvilke-regioner-har-vi-så">hvilke regioner har vi så?<a class="anchor" aria-label="anchor" href="#hvilke-regioner-har-vi-s%C3%A5"></a>
+</h2>
+<hr class="half-width">
+<p>afrika: af europa: eu nordamerika: na sydamerika: sa asien: as
+oceanien: oc</p>
+<p>Det kan vi skrive som en vektor.</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">regions</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"af"</span>, <span class="st">"sa"</span>, <span class="st">"na"</span>, <span class="st">"eu"</span>, <span class="st">"as"</span>, <span class="st">"oc"</span><span class="op">)</span></span></code></pre>
+</div>
+<p>Så vi vil gerne have skrevet en funktion der kan indsætte det her på
+“af” pladsen i vores url. Hvordan gør vi det?</p>
+</section><section><h2 class="section-heading" id="en-for-løkke">en for-løkke<a class="anchor" aria-label="anchor" href="#en-for-l%C3%B8kke"></a>
+</h2>
+<hr class="half-width">
+<p>Vi vil gerne trække data for hver af de regioner vi har i
+regions.</p>
+</section><section><h2 class="section-heading" id="hvordan-gemmer-vi-det">Hvordan gemmer vi det?<a class="anchor" aria-label="anchor" href="#hvordan-gemmer-vi-det"></a>
+</h2>
+<hr class="half-width">
+<p>vores funktion spytter dataframes ud. vi skal have et objekt der kan
+opsamle dem. Den type vi har der kan samle hvad som helst op er:
+list.</p>
+<p>Så vi definerer en liste.</p>
+<p>kører vores for loop. Og samler.</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">resultat</span> <span class="op">&lt;-</span> <span class="fu">list</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">regions</span><span class="op">)</span><span class="op">{</span></span>
+<span>   <span class="fu">print</span><span class="op">(</span><span class="va">i</span><span class="op">)</span></span>
+<span>   <span class="va">resultat</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">grabs_data</span><span class="op">(</span><span class="va">i</span><span class="op">)</span></span>
+<span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">resultat</span> <span class="op">|&gt;</span> <span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">view</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+</div>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<span class="callout-header">Key Points</span>
+<div class="callout-inner">
+<div class="callout-content">
+<ul>
+<li>Use <code>.md</code> files for episodes when you want static
+content</li>
+<li>Use <code>.Rmd</code> files for episodes when you need to generate
+output</li>
+<li>Run <code>sandpaper::check_lesson()</code> to identify any issues
+with your lesson</li>
+<li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
+locally</li>
+</ul>
+</div>
+</div>
+</div>
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
 </section></section>
 </div>
     </main>
@@ -541,8 +742,8 @@ any links that you are not going to use.
   "url": "https://Sorendavidsen.github.io/R-programming/instructor/aio.html",
   "identifier": "https://Sorendavidsen.github.io/R-programming/instructor/aio.html",
   "dateCreated": "2025-09-03",
-  "dateModified": "2025-11-04",
-  "datePublished": "2025-11-04"
+  "dateModified": "2025-11-05",
+  "datePublished": "2025-11-05"
 }
 
   </script><script>
