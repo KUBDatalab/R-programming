@@ -265,6 +265,18 @@
 </div>
 <!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush4">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading4">
+        <a href="loops.html">3. loops</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -322,7 +334,7 @@
         
 <section id="aio-introduction"><p>Content from <a href="introduction.html">introduction</a></p>
 <hr>
-<p>Last updated on 2025-11-05 |
+<p>Last updated on 2025-11-10 |
 
         <a href="https://github.com/Sorendavidsen/R-programming/edit/main/episodes/introduction.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 12 minutes</p>
@@ -383,7 +395,7 @@ reinforce the objectives.</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing
 challenges associated with the lessons. They appear in the “Instructor
@@ -415,7 +427,7 @@ View”</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Output </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -444,7 +456,7 @@ challenge blocks?</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
@@ -507,7 +519,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-functions"><p>Content from <a href="functions.html">functions</a></p>
 <hr>
-<p>Last updated on 2025-11-05 |
+<p>Last updated on 2025-11-10 |
 
         <a href="https://github.com/Sorendavidsen/R-programming/edit/main/episodes/functions.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 12 minutes</p>
@@ -630,13 +642,19 @@ input,
 <p>Den spytter nu en data frame ud, som indeholder data for den region
 vi har valgt.</p>
 <p>Vi gemmer funktionen i en separat .R fil. Og kører source på den.</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">source</span><span class="op">(</span><span class="st">"scripts/grabs_data.R"</span><span class="op">)</span></span></code></pre>
+</div>
 </section><section><h2 class="section-heading" id="hvilke-regioner-har-vi-så">hvilke regioner har vi så?<a class="anchor" aria-label="anchor" href="#hvilke-regioner-har-vi-s%C3%A5"></a>
 </h2>
 <hr class="half-width">
 <p>afrika: af europa: eu nordamerika: na sydamerika: sa asien: as
 oceanien: oc</p>
 <p>Det kan vi skrive som en vektor.</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -649,26 +667,127 @@ oceanien: oc</p>
 <hr class="half-width">
 <p>Vi vil gerne trække data for hver af de regioner vi har i
 regions.</p>
+<p>Så for hver region i <code>regions</code>, vil vi gerne køre
+grabs_data(navnetpåregionen)</p>
+<p>Det kan vi gøre manuelt. Vi kan også bede R gøre det. Og det gør vi i
+en for-løkke.</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">for</span><span class="op">(</span><span class="va">region</span> <span class="kw">in</span> <span class="va">regions</span><span class="op">)</span><span class="op">{</span></span>
+<span>   <span class="fu">grabs_data</span><span class="op">(</span><span class="va">region</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre>
+</div>
+<p>For-løkken løber gennem hvert enkelt element i <code>regions</code>,
+et efter et. Hvert af dem sættes efter tur til <code>region</code> og i
+løkken kører vi så funktionen <code>grabs_data</code> på det element i
+<code>regions</code> vi er nået til.</p>
+<p>Men det er en god ide at gemme resultatet i et eller andet. Ellers
+får vi blot spyttet output ud på konsollen. Og vi ville gerne kunne
+arbejde med det bagefter.</p>
 </section><section><h2 class="section-heading" id="hvordan-gemmer-vi-det">Hvordan gemmer vi det?<a class="anchor" aria-label="anchor" href="#hvordan-gemmer-vi-det"></a>
 </h2>
 <hr class="half-width">
-<p>vores funktion spytter dataframes ud. vi skal have et objekt der kan
-opsamle dem. Den type vi har der kan samle hvad som helst op er:
-list.</p>
-<p>Så vi definerer en liste.</p>
-<p>kører vores for loop. Og samler.</p>
-<div class="codewrapper sourceCode" id="cb5">
+<p>vores funktion spytter dataframes ud. Vi forventer at få 6 styk i
+alt. Så når vi gemmer dem, skal vi have dem samlet i et objekt eller
+datastruktur, der kan indeholde flere dataframes. Den type datastruktur
+vi har i R der kan samle hvad som helst op er en liste.</p>
+<p>Ja, der findes i princippet andre, men ikke indbygget i R.</p>
+<p>Så vi definerer en liste. Og for hver iteration i vores for løkke,
+gemmer vi resultatet i Så vi definerer en liste, gemmer resultatet for
+hvert kald af grabs_data i listen.</p>
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">resultat</span> <span class="op">&lt;-</span> <span class="fu">list</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">regions</span><span class="op">)</span><span class="op">{</span></span>
-<span>   <span class="fu">print</span><span class="op">(</span><span class="va">i</span><span class="op">)</span></span>
-<span>   <span class="va">resultat</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">grabs_data</span><span class="op">(</span><span class="va">i</span><span class="op">)</span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">region</span> <span class="kw">in</span> <span class="va">regions</span><span class="op">)</span><span class="op">{</span></span>
+<span>   <span class="fu">print</span><span class="op">(</span><span class="va">region</span><span class="op">)</span></span>
+<span>   <span class="va">resultat</span><span class="op">[[</span><span class="va">region</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">grabs_data</span><span class="op">(</span><span class="va">region</span><span class="op">)</span></span>
 <span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="va">resultat</span> <span class="op">|&gt;</span> <span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">view</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+<span><span class="op">}</span></span></code></pre>
+</div>
+<p>Nu har vi så en liste, <code>resultat</code>, der indeholder 6
+dataframes. Dem vil vi gerne have samlet til en.</p>
+<p>Det sker så ofte, at der findes en funktion til det:
+<code>bind_rows()</code></p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">resultat</span> <span class="op">|&gt;</span> <span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span> </span></code></pre>
+</div>
+<p>Vi skal nok gå lidt ind i hvad en liste er. Det er en del af
+formålet.</p>
+</section><section><h2 class="section-heading" id="så-hvad-er-en-liste">Så hvad er en liste?<a class="anchor" aria-label="anchor" href="#s%C3%A5-hvad-er-en-liste"></a>
+</h2>
+<hr class="half-width">
+<p>Vectors have a major limitation. They can only contain elements of
+the same type. And they cant contain dataframes.</p>
+<p>If we need to construct an object that can contain elements of more
+than one type of data, we use a <code>list</code>.</p>
+<p>We already know lists! A dataframe is a list of vectors (of the same
+length).</p>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_first_list</span> <span class="op">&lt;-</span> <span class="fu">list</span><span class="op">(</span><span class="va">mtcars</span>, <span class="st">"text"</span>, <span class="fu">c</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<p>my_first_list now contains a dataframe, at text-string and a numeric
+vector with three elements.</p>
+<p>We extract elements from lists in a slightly different way. If we
+have a vector, <code>vector[2]</code> will extract the second element.
+If it is a numeric vector, we get a numeric element, a character vector
+will return a character.</p>
+<p><code>my_first_list[2]</code> will return a list-element, that is,
+not the “raw” element:</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_first_list</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>[[1]]
+[1] "text"</code></pre>
+</div>
+<p>Note the [[1]] at the beginning. This is a hint that what is actually
+returned is a list:</p>
+<div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">class</span><span class="op">(</span><span class="va">my_first_list</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>[1] "list"</code></pre>
+</div>
+<p>If we want to get the actual element, in this case a
+string/character, we need to use a [[]] notation:</p>
+<div class="codewrapper sourceCode" id="cb14">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_first_list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>[1] "text"</code></pre>
+</div>
+<p>This also mean that if we want to add a fourth element to the list,
+we have to use the [[]] notation:</p>
+<div class="codewrapper sourceCode" id="cb16">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_first_list</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
@@ -694,7 +813,146 @@ locally</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</section></section>
+</section></section><section id="aio-loops"><p>Content from <a href="loops.html">loops</a></p>
+<hr>
+<p>Last updated on 2025-11-10 |
+
+        <a href="https://github.com/Sorendavidsen/R-programming/edit/main/episodes/loops.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 12 minutes</p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>How do you write a lesson using R Markdown and
+<a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Explain how to use markdown with the new lesson template</li>
+<li>Demonstrate how to include pieces of code, figures, and nested
+challenge blocks</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Udvidet R-programmeringskursus</p>
+<p>Hvilket datasæt skal vi bruge?</p>
+<p>Kurset skal være slides-baseret</p>
+<p>Starte hvor vi slap på sidste kursus og bygge videre ovenpå det</p>
+<p>Funktioner (recycling - men jeg ved ikke om det er så vigtigt)</p>
+<p>recyling eksempel:</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span> <span class="op">+</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>[1] 2 4 4 6</code></pre>
+</div>
+<p>1:2 er kortere end 1:4. Så det kan man jo ikke. Men vi kan recycle
+1:2.</p>
+<p>Vi kan ikke recycle hvis længderne ikke går op i hinanden:</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="warning" tabindex="0"><code>Warning in 1:3 + 1:4: longer object length is not a multiple of shorter object
+length</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>[1] 2 4 6 5</code></pre>
+</div>
+<p>Eller - det kan vi, men det kaster en advarsel, og skal nok gøre med
+forsigtighed.</p>
+<p>Tage reviews og lave sentiment analyse</p>
+<p>For hvert enkelt review</p>
+<p>For hvert enkelt source</p>
+<p>Data-strukturer</p>
+<p>Matricer</p>
+<p>Lister</p>
+<p>Christian har en ide med mapping af funktion på datasæt</p>
+<p>Case when</p>
+<p>Samle lande i regioner</p>
+<p>Fx source</p>
+<p>Fx lave alder om til aldersgruppe</p>
+<p>If_else</p>
+<p>Hvis original sprog er eng ikke oversat eller oversat</p>
+<p>Flere scripts</p>
+<p>Funktioner.R</p>
+<p>Libraries.R</p>
+<p>Selvescriptet.R</p>
+<p>Coersing af data</p>
+<p>‘Age’ lav om til streng og ikke tal, så der skal coerses</p>
+<p>Text</p>
+<p>Sentiment analyse</p>
+<p>Join</p>
+<p>Vendor med andet datasæt</p>
+<p>Faktorer</p>
+<p>Vendor navn</p>
+<p>Pivot</p>
+<p>Vendor datasæt skal pivoteres</p>
+<p>Matricer</p>
+<p>Hvis man vil videre med statistik</p>
+<p>Chi i anden test</p>
+<p>Plot?</p>
+<p>Lave noget med ordinale faktorer</p>
+<p>Loops – while, for</p>
+<p>Tildeling af kategorier på baggrund af ord i review – kategorier som
+liste</p>
+<p>Finde de 10 første positive for hvert brand</p>
+<p>Hente filer med data fra vendor – samle i en list – bind_rows</p>
+<p>Logiske strukturer</p>
+<p>Ideer til sammenhænge</p>
+<p>Funktioner – en med case-when og loop (læg i seperat script)</p>
+<p>Script med packages/library kommandoer bruges med source i andre
+filer</p>
+<p>Function(text){if_else(text, str_detect(“julefilm”, “ja”, “nej”} -
+måske i description feltet</p>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<span class="callout-header">Key Points</span>
+<div class="callout-inner">
+<div class="callout-content">
+<ul>
+<li>Use <code>.md</code> files for episodes when you want static
+content</li>
+<li>Use <code>.Rmd</code> files for episodes when you need to generate
+output</li>
+<li>Run <code>sandpaper::check_lesson()</code> to identify any issues
+with your lesson</li>
+<li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
+locally</li>
+</ul>
+</div>
+</div>
+</div></section>
 </div>
     </main>
 </div>
@@ -742,8 +1000,8 @@ any links that you are not going to use.
   "url": "https://Sorendavidsen.github.io/R-programming/instructor/aio.html",
   "identifier": "https://Sorendavidsen.github.io/R-programming/instructor/aio.html",
   "dateCreated": "2025-09-03",
-  "dateModified": "2025-11-05",
-  "datePublished": "2025-11-05"
+  "dateModified": "2025-11-10",
+  "datePublished": "2025-11-10"
 }
 
   </script><script>
