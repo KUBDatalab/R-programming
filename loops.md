@@ -70,12 +70,30 @@ For hvert enkelt source
 Data-strukturer 
 
 Matricer 
+Den kan vi godt få svært ved at finde en måde at introducere...
 
 Lister 
+der er noget allerede
 
 Christian har en ide med mapping af funktion på datasæt  
 
 Case when 
+
+til omkodning af data
+
+
+``` r
+mutate(ny_kol = case_when(
+   x < 5 ~ "mindre end fem",
+   x == 5 ~ "lig fem",
+   x > 5 ~ "større end fem",
+   .default = "godt spørgsmål"
+))
+
+NA_character_
+```
+
+Måske NA_character_ introduceret her - eller har de opdateret case_when til at håndtere det?
 
 Samle lande i regioner 
 
