@@ -67,6 +67,7 @@ contact: 'team@carpentries.org'
 episodes: 
 - introduction.Rmd
 - functions.Rmd
+- loops.Rmd
 
 # Information for Learners
 learners: 

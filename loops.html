@@ -371,10 +371,27 @@ forsigtighed.</p>
 <p>For hvert enkelt review</p>
 <p>For hvert enkelt source</p>
 <p>Data-strukturer</p>
-<p>Matricer</p>
-<p>Lister</p>
+<p>Matricer Den kan vi godt få svært ved at finde en måde at
+introducere…</p>
+<p>Lister der er noget allerede</p>
 <p>Christian har en ide med mapping af funktion på datasæt</p>
 <p>Case when</p>
+<p>til omkodning af data</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">mutate</span><span class="op">(</span>ny_kol <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
+<span>   <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">5</span> <span class="op">~</span> <span class="st">"mindre end fem"</span>,</span>
+<span>   <span class="va">x</span> <span class="op">==</span> <span class="fl">5</span> <span class="op">~</span> <span class="st">"lig fem"</span>,</span>
+<span>   <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">5</span> <span class="op">~</span> <span class="st">"større end fem"</span>,</span>
+<span>   .default <span class="op">=</span> <span class="st">"godt spørgsmål"</span></span>
+<span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="cn">NA_character_</span></span></code></pre>
+</div>
+<p>Måske NA_character_ introduceret her - eller har de opdateret
+case_when til at håndtere det?</p>
 <p>Samle lande i regioner</p>
 <p>Fx source</p>
 <p>Fx lave alder om til aldersgruppe</p>
