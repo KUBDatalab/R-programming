@@ -95,6 +95,10 @@ Den spytter nu en data frame ud, som indeholder data for den region vi har valgt
 Vi gemmer funktionen i en separat .R fil. Og kører source på den.
 
 
+``` r
+source("scripts/grabs_data.R")
+```
+
 ## hvilke regioner har vi så?
 
 afrika: af
@@ -118,37 +122,115 @@ på "af" pladsen i vores url. Hvordan gør vi det?
 
 Vi vil gerne trække data for hver af de regioner vi har i regions.
 
+Så for hver region i `regions`, vil vi gerne køre grabs_data(navnetpåregionen)
+
+Det kan vi gøre manuelt. Vi kan også bede R gøre det. Og det gør vi i en for-løkke.
+
+
+``` r
+for(region in regions){
+   grabs_data(region)
+}
+```
+
+For-løkken løber gennem hvert enkelt element i `regions`, et efter et. Hvert af dem sættes efter tur til `region` og
+i løkken kører vi så funktionen `grabs_data` på det element i `regions` vi er nået til. 
+
+Men det er en god ide at gemme resultatet i et eller andet. Ellers får vi blot spyttet output ud på konsollen. Og vi ville gerne kunne arbejde med det bagefter.
+
 ## Hvordan gemmer vi det?
 
-vores funktion spytter dataframes ud. vi skal have et objekt der 
-kan opsamle dem. Den type vi har der kan samle hvad som helst op er:
-list. 
+vores funktion spytter dataframes ud. Vi forventer at få 6 styk i alt. 
+Så når vi gemmer dem, skal vi have dem samlet i et objekt eller datastruktur, der
+kan indeholde flere dataframes. Den type datastruktur vi har i R der kan samle hvad som helst op er en liste.
 
-Så vi definerer en liste.
+Ja, der findes i princippet andre, men ikke indbygget i R.
 
-kører vores for loop.
-Og samler.
+Så vi definerer en liste. Og for hver iteration i vores for løkke, gemmer vi resultatet i 
+Så vi definerer en liste, gemmer resultatet for hvert kald af grabs_data i listen.
+
+
 
 
 ``` r
 resultat <- list()
-for(i in regions){
-   print(i)
-   resultat[[i]] <- grabs_data(i)
+for(region in regions){
+   print(region)
+   resultat[[region]] <- grabs_data(region)
 
 }
-
-resultat |> bind_rows() |> view()
 ```
 
+Nu har vi så en liste, `resultat`, der indeholder 6 dataframes. Dem vil vi gerne have samlet til en.
+
+Det sker så ofte, at der findes en funktion til det: `bind_rows()`
 
 
+``` r
+resultat |> bind_rows() 
+```
+
+Vi skal nok gå lidt ind i hvad en liste er. Det er en del af formålet.
 
 
+## Så hvad er en liste?
+
+Vectors have a major limitation. They can only contain elements of the same type. And they cant contain dataframes.
+
+If we need to construct an object that can contain elements of more than one type of data, we use a `list`.
+
+We already know lists! A dataframe is a list of vectors (of the same length).
 
 
+``` r
+my_first_list <- list(mtcars, "text", c(1:3))
+```
+
+my_first_list now contains a dataframe, at text-string and a numeric vector with three elements.
+
+We extract elements from lists in a slightly different way. If we have a vector, `vector[2]` will extract the second element. If it is a
+numeric vector, we get a numeric element, a character vector will return a character.
+
+`my_first_list[2]` will return a list-element, that is, not the "raw" element:
 
 
+``` r
+my_first_list[2]
+```
+
+``` output
+[[1]]
+[1] "text"
+```
+
+Note the [[1]] at the beginning. This is a hint that what is actually returned is a list:
+
+
+``` r
+class(my_first_list[1])
+```
+
+``` output
+[1] "list"
+```
+
+If we want to get the actual element, in this case a string/character, we need to use a [[]] notation:
+
+
+``` r
+my_first_list[[2]]
+```
+
+``` output
+[1] "text"
+```
+
+This also mean that if we want to add a fourth element to the list, we have to use the [[]] notation:
+
+
+``` r
+my_first_list[[4]] <- c(TRUE, FALSE, FALSE, TRUE)
+```
 
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
