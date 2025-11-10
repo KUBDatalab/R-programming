@@ -1,0 +1,139 @@
+---
+title: 'loops'
+teaching: 10
+exercises: 2
+---
+
+:::::::::::::::::::::::::::::::::::::: questions 
+
+- How do you write a lesson using R Markdown and `{sandpaper}`?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Explain how to use markdown with the new lesson template
+- Demonstrate how to include pieces of code, figures, and nested challenge blocks
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+Udvidet R-programmeringskursus 
+
+Hvilket datasæt skal vi bruge? 
+
+Kurset skal være slides-baseret 
+
+Starte hvor vi slap på sidste kursus og bygge videre ovenpå det 
+
+ 
+
+
+Funktioner (recycling - men jeg ved ikke om det er så vigtigt) 
+
+recyling eksempel:
+
+```{r}
+1:4 + 1:2
+```
+
+1:2 er kortere end 1:4. Så det kan man jo ikke.  Men vi kan recycle 1:2.
+
+Vi kan ikke recycle hvis længderne ikke går op i hinanden:
+
+```{r}
+1:3 + 1:4
+```
+
+Eller - det kan vi, men det kaster en advarsel, og skal nok gøre med forsigtighed.
+
+Tage reviews og lave sentiment analyse 
+
+For hvert enkelt review 
+
+For hvert enkelt source 
+
+Data-strukturer 
+
+Matricer 
+
+Lister 
+
+Christian har en ide med mapping af funktion på datasæt  
+
+Case when 
+
+Samle lande i regioner 
+
+Fx source 
+
+Fx lave alder om til aldersgruppe 
+
+If_else 
+
+Hvis original sprog er eng ikke oversat eller oversat 
+
+Flere scripts 
+
+Funktioner.R 
+
+Libraries.R 
+
+Selvescriptet.R 
+
+Coersing af data 
+
+‘Age’ lav om til streng og ikke tal, så der skal coerses 
+
+Text 
+
+Sentiment analyse 
+
+Join 
+
+Vendor med andet datasæt 
+
+Faktorer 
+
+Vendor navn 
+
+Pivot 
+
+Vendor datasæt skal pivoteres 
+
+Matricer 
+
+Hvis man vil videre med statistik 
+
+Chi i anden test 
+
+Plot? 
+
+Lave noget med ordinale faktorer 
+
+Loops – while, for 
+
+Tildeling af kategorier på baggrund af ord i review – kategorier som liste 
+
+Finde de 10 første positive for hvert brand 
+
+Hente filer med data fra vendor – samle i en list – bind_rows 
+
+Logiske strukturer 
+
+Ideer til sammenhænge 
+
+Funktioner – en med case-when og loop (læg i seperat script) 
+
+Script med packages/library kommandoer bruges med source i andre filer 
+
+Function(text){if_else(text, str_detect(“julefilm”, “ja”, “nej”} - måske i description feltet 
+
+::::::::::::::::::::::::::::::::::::: keypoints 
+
+- Use `.md` files for episodes when you want static content
+- Use `.Rmd` files for episodes when you need to generate output
+- Run `sandpaper::check_lesson()` to identify any issues with your lesson
+- Run `sandpaper::build_lesson()` to preview your lesson locally
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
