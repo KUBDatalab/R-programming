@@ -127,6 +127,10 @@ Vendor med andet datasæt
 
 Faktorer 
 
+kategoriske variable. Har vi ordinale værdier i datasættet?
+
+forcats
+
 Vendor navn 
 
 Pivot 
