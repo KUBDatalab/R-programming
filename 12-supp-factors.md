@@ -34,6 +34,14 @@ For instance, if you have a factor with 2 levels:
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
+## Udklip ang. datastrukturer
+Data structures are very important to understand because these are the objects you will manipulate on a day-to-day basis in R.
+
+Elements of these data types may be combined to form data structures, such as atomic vectors.
+When we call a vector *atomic*, we mean that the vector only holds data of a single data type.
+Below are examples of atomic character vectors, numeric vectors, integer vectors, etc.
+
+
 ## The `factor()` Command
 
 The `factor()` command is used to create and modify factors in R:
