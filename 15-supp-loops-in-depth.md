@@ -200,7 +200,7 @@ system.time(avg2 <- analyze2(filenames))
 
 ``` output
    user  system elapsed 
-  0.024   0.000   0.024 
+  0.023   0.001   0.029 
 ```
 
 Note how we add a new column to `out` at each iteration?
