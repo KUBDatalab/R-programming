@@ -38,171 +38,27 @@ R has six basic data types.
 - complex: `1+4i` (complex numbers with real and imaginary parts)
 - raw: `0`, `1` (binary data)
 
-`Raw` is raw binary data (ones and zeroes), and is very seldomly used. Therefore it will not be discussed in this workshop.
+`Raw` is raw binary data (ones and zeroes), and is very seldomly used. Therefore it will not be discussed in this training session.
 
 With the assignment operator `<-` you can create `objects`. 
 
 
 ``` r
 number <- 5
+string <- "Hello"
 ```
 
-What is an object?
+An object is a fundamental data structure used to store and manipulate data. Objects in R can hold different types of data, such as the basic datatype mentioned above, or event more complex structures such as vectors and lists which we will cover later.
 
+### Objects
+The above object is created based on a basic datatype. Object contain more complex datastructure. R has many  **data structures**.
 
-
-::::::::::::::::::::::::::::::::::::::: discussion
-
-### Taking a quick look at your objects
-R provides functions to inspects your objects. Here are som examples of functions to inspect object created based on basic datatypes.
-
-:::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::: solution
-
-### How to show the first / last rows
-
-
-``` r
-head(articles)
-```
-
-``` error
-Error:
-! object 'articles' not found
-```
-
-``` r
-tail(articles)
-```
-
-``` error
-Error:
-! object 'articles' not found
-```
-
-
-:::::::::::::::: 
-
-:::::::::::::::: solution
-### How to show information about the columns
-
-
-``` r
-glimpse(articles)
-```
-
-``` error
-Error in `glimpse()`:
-! could not find function "glimpse"
-```
-::::::::::::::::
-
-:::::::::::::::: solution
-### Get the names of the variables / columns
-
-``` r
-names(articles)
-```
-
-``` error
-Error:
-! object 'articles' not found
-```
- 
-:::::::::::::::: 
-
-:::::::::::::::: solution
-### Get the dimension of the dataset (number of rows and coloumns)
-
-
-``` r
-dim(articles)
-```
-
-``` error
-Error:
-! object 'articles' not found
-```
-
-::::::::::::::::
-
-- `class()` - what kind of object is it (high-level)?
-- `typeof()` - what is the object's data type (low-level)?
-- `length()` - how long is it? What about two dimensional objects?
-- `attributes()` - does it have any metadata?
-
-HUSK coersion og missing data
-
-
-``` r
-# Example
-x <- "dataset"
-typeof(x)
-```
-
-``` output
-[1] "character"
-```
-
-``` r
-attributes(x)
-```
-
-``` output
-NULL
-```
-
-``` r
-y <- 1:10
-y
-```
-
-``` output
- [1]  1  2  3  4  5  6  7  8  9 10
-```
-
-``` r
-typeof(y)
-```
-
-``` output
-[1] "integer"
-```
-
-``` r
-length(y)
-```
-
-``` output
-[1] 10
-```
-
-``` r
-z <- as.numeric(y)
-z
-```
-
-``` output
- [1]  1  2  3  4  5  6  7  8  9 10
-```
-
-``` r
-typeof(z)
-```
-
-``` output
-[1] "double"
-```
-
-R has many **data structures**.
 These include
-
-- atomic vector
-- list
-- matrix
-- data frame
-- factors
+* atomic vector
+* list
+* matrix
+* data frame
+* factors
 
 ### Vectors
 
@@ -1024,10 +880,102 @@ str(PlantGrowth)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+## Bruges?
+::::::::::::::::::::::::::::::::::::::: discussion
+
+### Taking a quick look at your objects
+R provides functions to inspects your objects. Here are some examples of functions to inspect object created based on basic datatypes.
+
+:::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::: solution
+
+### How to show the first / last rows
+
+
+``` r
+head(articles)
+```
+
+``` error
+Error:
+! object 'articles' not found
+```
+
+``` r
+tail(articles)
+```
+
+``` error
+Error:
+! object 'articles' not found
+```
+
+
+:::::::::::::::: 
+
+:::::::::::::::: solution
+### How to show information about the columns
+
+
+``` r
+glimpse(articles)
+```
+
+``` error
+Error in `glimpse()`:
+! could not find function "glimpse"
+```
+::::::::::::::::
+
+:::::::::::::::: solution
+### Get the names of the variables / columns
+
+``` r
+names(articles)
+```
+
+``` error
+Error:
+! object 'articles' not found
+```
+ 
+:::::::::::::::: 
+
+:::::::::::::::: solution
+### Get the dimension of the dataset (number of rows and coloumns)
+
+
+``` r
+dim(articles)
+```
+
+``` error
+Error:
+! object 'articles' not found
+```
+
+::::::::::::::::
+
+- `class()` - what kind of object is it (high-level)?
+- `typeof()` - what is the object's data type (low-level)?
+- `length()` - how long is it? What about two dimensional objects?
+- `attributes()` - does it have any metadata?
+
+HUSK coersion og missing data
+
+
+
+
 ## Overvejes om det skal bruges eller slettes
 Dealing with object conversions is one of the most common sources of frustration for beginners.
 
 **Everything** in R is an object.
+
+
+
+
+
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
